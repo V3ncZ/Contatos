@@ -79,9 +79,12 @@
 				<artifactId>flyway-maven-plugin</artifactId>
 				<version>10.20.1</version>
 				<configuration>
-					<url>jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL</url>
-					<user>rm555834</user>
-					<password>121204</password>
+					<!--suppress UnresolvedMavenProperty -->
+					<url>${flyway.url}</url>
+					<!--suppress UnresolvedMavenProperty -->
+					<user>${flyway.user}</user>
+					<!--suppress UnresolvedMavenProperty -->
+					<password>${flyway.password}</password>
 				</configuration>
 			</plugin>
 
