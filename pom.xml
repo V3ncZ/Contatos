@@ -74,6 +74,17 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-maven-plugin</artifactId>
+				<version>10.20.1</version>
+				<configuration>
+					<url>jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL</url>
+					<user>rm555834</user>
+					<password>121204</password>
+				</configuration>
+			</plugin>
+
 		</plugins>
 	</build>
 
