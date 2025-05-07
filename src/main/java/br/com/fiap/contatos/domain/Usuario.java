@@ -32,6 +32,14 @@ public class Usuario implements UserDetails {
         this.senha = senha;
     }
 
+    public UsuarioRole getRole() {
+        return role;
+    }
+
+    public void setRole(UsuarioRole role) {
+        this.role = role;
+    }
+
     public Long getId() {
         return id;
     }
@@ -68,12 +76,12 @@ public class Usuario implements UserDetails {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Usuario usuario = (Usuario) o;
-        return Objects.equals(id, usuario.id) && Objects.equals(nome, usuario.nome) && Objects.equals(email, usuario.email) && Objects.equals(senha, usuario.senha);
+        return Objects.equals(id, usuario.id) && Objects.equals(nome, usuario.nome) && Objects.equals(email, usuario.email) && Objects.equals(senha, usuario.senha) && role == usuario.role;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nome, email, senha);
+        return Objects.hash(id, nome, email, senha, role);
     }
 
     //Metodos da interface UserDetails
