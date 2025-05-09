@@ -1,6 +1,9 @@
 package br.com.fiap.contatos.controller;
 
+import br.com.fiap.contatos.config.security.TokenService;
+import br.com.fiap.contatos.domain.Usuario;
 import br.com.fiap.contatos.dto.LoginDto;
+import br.com.fiap.contatos.dto.TokenDto;
 import br.com.fiap.contatos.dto.UsuarioCadastroDto;
 import br.com.fiap.contatos.dto.UsuarioExibicaoDto;
 import br.com.fiap.contatos.service.UsuarioService;
@@ -18,6 +21,9 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     @Autowired
+    private TokenService tokenService;
+
+    @Autowired
     private AuthenticationManager authenticationManager;
 
     @Autowired
@@ -32,7 +38,9 @@ public class AuthController {
 
         Authentication auth = authenticationManager.authenticate(usernamePassword);
 
-        return ResponseEntity.ok().build();
+        String token = tokenService.gerarToken((Usuario) auth.getPrincipal());
+
+        return ResponseEntity.ok(new TokenDto(token));
     }
 
     @PostMapping("/register")
